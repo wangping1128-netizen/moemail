@@ -71,6 +71,8 @@ export async function GET(
         received_at: message.receivedAt,
         sent_at: message.sentAt
       }
+    }, {
+      headers: { 'Cache-Control': 'no-store, max-age=0' }
     })
   } catch (error) {
     console.error("Failed to fetch shared message:", error)
