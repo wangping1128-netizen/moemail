@@ -112,6 +112,8 @@ export async function GET(
       })),
       nextCursor,
       total: totalCount
+    }, {
+      headers: { 'Cache-Control': 'no-store, max-age=0' }
     })
   } catch (error) {
     console.error("Failed to fetch shared messages:", error)

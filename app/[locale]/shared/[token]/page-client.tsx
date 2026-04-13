@@ -73,7 +73,7 @@ export function SharedEmailPageClient({
         url.searchParams.set('cursor', cursor)
       }
 
-      const messagesResponse = await fetch(url)
+      const messagesResponse = await fetch(url, { cache: 'no-store' })
       if (messagesResponse.ok) {
         const messagesData = await messagesResponse.json() as {
           messages: Message[]
@@ -157,7 +157,7 @@ export function SharedEmailPageClient({
     try {
       setMessageLoading(true)
 
-      const response = await fetch(`/api/shared/${token}/messages/${messageId}`)
+      const response = await fetch(`/api/shared/${token}/messages/${messageId}`, { cache: 'no-store' })
 
       if (!response.ok) {
         throw new Error("Failed to load message")
