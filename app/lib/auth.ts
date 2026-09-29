@@ -103,6 +103,9 @@ export const {
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
+      // GitHub now returns an RFC 9207 `iss` param on the callback; without a
+      // matching issuer, @auth/core <0.41 falls back to https://authjs.dev and rejects it.
+      issuer: "https://github.com/login/oauth",
       allowDangerousEmailAccountLinking: true,
     }),
     Google({
